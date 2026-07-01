@@ -35,3 +35,20 @@ jobs:
 | `DOCKERHUB_TOKEN` | yes | Docker Hub access token |
 
 The workflow pushes to `ghcr.io/jchonig/<image_name>` and `jchonig/<image_name>`.
+
+---
+
+### keepalive
+
+Prevents GitHub from disabling scheduled workflows after 60 days of inactivity.
+
+**Usage:**
+
+```yaml
+jobs:
+  keepalive:
+    if: github.event_name == 'schedule'
+    uses: jchonig/workflows/.github/workflows/keepalive.yml@main
+    permissions:
+      actions: write
+```
